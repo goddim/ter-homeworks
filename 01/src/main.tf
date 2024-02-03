@@ -15,7 +15,6 @@ provider "yandex" {
 }
 
 provider "docker" {}
-#однострочный комментарий
 
 resource "random_password" "random_string" {
   length      = 16
@@ -25,19 +24,12 @@ resource "random_password" "random_string" {
   min_numeric = 1
 }
 
-/*
-resource "docker_image" {
-  name         = "nginx:latest"
-  keep_locally = true
-}
-
-resource "docker_container" "1nginx" {
-  image = docker_image.nginx.image_id
-  name  = "example_${random_password.random_string.result}"
+resource "docker_container" "hello_world" {
+  name = "hello_world_${random_password.random_string.result}"
+  image = "nginx:latest"
 
   ports {
     internal = 80
     external = 9090
   }
 }
-*/
