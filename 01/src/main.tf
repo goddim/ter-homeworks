@@ -1,15 +1,20 @@
 terraform {
   required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
     docker = {
-      source  = "kreuzwerker/docker"
-      version = "~> 3.0.1"
+      source = "kreuzwerker/docker"
     }
   }
-  required_version = ">=0.13" /*Многострочный комментарий.
- Требуемая версия terraform */
+  required_version = ">= 0.13"
 }
-provider "docker" {}
 
+provider "yandex" {
+  zone = "ru-central1-a"
+}
+
+provider "docker" {}
 #однострочный комментарий
 
 resource "random_password" "random_string" {
@@ -28,7 +33,7 @@ resource "docker_image" {
 
 resource "docker_container" "1nginx" {
   image = docker_image.nginx.image_id
-  name  = "example_${random_password.random_string_FAKE.resulT}"
+  name  = "example_${random_password.random_string.result}"
 
   ports {
     internal = 80
