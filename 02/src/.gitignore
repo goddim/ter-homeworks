@@ -13,3 +13,4 @@ personal.auto.tfvars
 .authorized_key.json
 key.json
 dimserv-key.json
+service_account_key_file.json
