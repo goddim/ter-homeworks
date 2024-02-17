@@ -30,3 +30,12 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network&subnet name"
 }
+
+variable "vm_base" {
+  type = map(any)
+  default = {
+    cores         = 2,
+    memory        = 1,
+    core_fraction = 5,
+  }
+}
